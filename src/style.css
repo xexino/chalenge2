@@ -1,3 +1,4 @@
+
 .card {
     margin: auto;
     max-width: 950px;
@@ -21,11 +22,19 @@
     padding: 4vh;
     color: rgb(65, 65, 65)
 }
+.search{
+    width: 30%;
+}
+
 input {
+    text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
     margin-bottom: 4vh;
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247)
+}
+.drake{
+    margin: 0 auto !important;
 }
