@@ -1,14 +1,15 @@
-const ShoppingCartSearch = ({filterlistByTitile,filterListCommandes}) => {
+import React from 'react'
+
+export default function ShoppingCartSearch({filterlistByTitile  ,filterByTitile}) {
     return (
         <>
-            <input
-                    onKeyUp={ filterlistByTitile}
-                    ref={filterListCommandes}
+             <input 
+                    
+                    onKeyUp={filterByTitile}
+                    ref={filterlistByTitile}
                     type="search" 
-                    placeholder="search by title" 
-                    className="search" />
+                    placeholder="filter by title" 
+                    className="search col" />
         </>
-    );
+    )
 }
-
-export default ShoppingCartSearch;

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/template/template.css">
+
+    <title>Shooping Cart</title>
+</head>
+
+<body>
+    <div class=" container   w-75 p-4">
+        <div class="row">
+            <div class="Shopping-Cart col-8 border">
+                <div class=" search row m-3">
+                    <h1 class="col-8">Shopping Cart</h1>
+                    <input type="search" placeholder="filter by title" class="form-control col">
+                </div>
+                            <!-- ////cart shopping/// -->
+                <div class=" border row d-flex justify-content-between m-2 p-2">
+                    <div class="d-flex product col-5">
+                        <img src="../src/component/img/black.jpg" alt="">
+                        <div class="">
+                            <h5 class="text-muted">Shirt</h5>
+                            <p>Cotton T-shirt</p>
+                        </div>    
+                    </div>
+                    <div class="col d-flex  align-items-center s-5">
+                        <button type="button" class="btn btn-secondary">-</button>
+                        <input type="number" value="1" class="form-control m-2">
+                        <button type="button" class="btn btn-secondary">+</button>
+                    </div>
+                    <div class="d-flex  align-items-center col">
+                    $ 44
+                    </div>
+                    <div class="col d-flex  align-items-center ">
+                     <button type="button" class="btn btn-danger"><i class="fas fa-ban"></i></button>  
+                    </div>
+                </div>  <div class=" border row d-flex justify-content-between m-2 p-2">
+                    <div class="d-flex product col-5">
+                        <img src="../src/component/img/black.jpg" alt="">
+                        <div class="">
+                            <h5 class="text-muted">Shirt</h5>
+                            <p>Cotton T-shirt</p>
+                        </div>    
+                    </div>
+                    <div class="col d-flex  align-items-center s-5">
+                        <button type="button" class="btn btn-secondary">-</button>
+                        <input type="number" value="1" class="form-control m-2">
+                        <button type="button" class="btn btn-secondary">+</button>
+                    </div>
+                    <div class="d-flex  align-items-center col">
+                    $ 44
+                    </div>
+                    <div class="col d-flex  align-items-center ">
+                     <button type="button" class="btn btn-danger"><i class="fas fa-ban"></i></button>  
+                    </div>
+                </div>  <div class=" border row d-flex justify-content-between m-2 p-2">
+                    <div class="d-flex product col-5">
+                        <img src="../src/component/img/black.jpg" alt="">
+                        <div class="">
+                            <h5 class="text-muted">Shirt</h5>
+                            <p>Cotton T-shirt</p>
+                        </div>    
+                    </div>
+                    <div class="col d-flex  align-items-center s-5">
+                        <button type="button" class="btn btn-secondary ">-</button>
+                        <input type="number" value="1" class="form-control m-2 ">
+                        <button type="button" class="btn btn-secondary">+</button>
+                    </div>
+                    <div class="d-flex  align-items-center col">
+                    $ 44
+                    </div>
+                    <div class="col d-flex  align-items-center ">
+                     <button type="button" class="btn btn-danger"><i class="fas fa-ban"></i></button>  
+                    </div>
+                </div>
+                <button type="button" class="btn btn-light m-4 p-1"><i class="fas fa-directions"></i>  Ceckout</button>
+            </div>
+            <!-- ////cart shopping/// -->
+
+            <!-- summary -->
+            <div class="summary col-4 border bg-secondary bg-gradient p-4">
+                <h3 class="p-3">Summary</h3>
+                <hr>
+                <div class="d-flex justify-content-around">
+                    <p>ITEMS 3</p>
+                    <p>$132.00</p>
+                </div>
+               
+                <h5 class="p-3"><b>SHIPPING :</b> </h5>
+                <select class="form-control text-center  mx-auto" style="width: 60%;">
+                    <option value="delivery">Standar-delivery-$5.00</option>
+                    <option value="delivery">Premium-delivery-$15.00</option>
+                    <option value="delivery">Fast-delivery-$40.00(daily delivery)</option>
+                </select>
+                <div class="d-flex m-2">
+                <h5 class="p-2"><b> GIVE CODE :</b></h5>
+                <select name="GIVE CODE" class="form-control text-center mx-auto" style="width: 15%;">
+                    <option value="delivery">0%</option>
+                    <option value="delivery">10%</option>
+                    <option value="delivery">20%</option>
+                </select>
+              </div>
+                <hr>
+                <div class="d-flex justify-content-around">
+                    <p><b>TOTAL PRICE</b> </p>
+                    <p><b>$ 137.00</b></p>
+                </div>
+                <button type="button" class="mx-auto btn btn-dark">REGISTER</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

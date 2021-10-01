@@ -1,149 +1,187 @@
-import ShoppingCartList from "./ShoppingCartList"
-import ShoppingCartSearch from "./ShoppingCartSearch"
-import Summary from "./Summary"
-import black from "./img/black.jpg"
-import blue from "./img/blue.jpg"
-import pink from "./img/pink.jpg"
-import Command from "../model/command"
-import { useEffect, useState ,useRef} from "react"
-
-const ShoopingCart = () => {
-
-    const [LIST_COMMANDES, setLIST_COMMANDES] = useState(
-        [
-            new Command(1, "Shirt black", "Cotton T-shirt", black, 44, 1),
-            new Command(2, "Shirt blue", "Cotton T-shirt", blue, 44, 1),
-            new Command(3, "Shirt pink", "Cotton T-shirt", pink, 44, 1),
-        ]
-    )
-
-    const addQuantity = (id) => {
-        const newList = [...LIST_COMMANDES]
-
-        newList.forEach(c => {
-            if (c.id === id) {
-                c.quantite++
-            }
-        })
-        setLIST_COMMANDES([...newList])
-    }
+import { useEffect, useRef, useState } from "react";
+import ShoppingCartList from "./ShoppingCartList";
+import ShoppingCartSearch from "./ShoppingCartSearch";
+import Summary from "./Summary";
+const ShoppingCart = () => {
 
 
-    const decQuantity = (id) => {
-        const newList = [...LIST_COMMANDES]
+    const [Data, setData] = useState([
+        {
+            id: 1,
+            title: "Shirt black",
+            desc: "Cotton T-shirt",
+            img: "https://media.istockphoto.com/photos/blank-black-tshirt-front-with-clipping-path-picture-id483960103?k=20&m=483960103&s=612x612&w=0&h=H4TNt5SOmcNIRMqrKY7J5u2Yy-f0ZZbD_Dsqqw3if1I=",
+            price: 44,
+            quantite: 1,
 
-        newList.forEach(c => {
-            if (c.quantite === 0) {
-                window.confirm('Are you sure you wish to delete this item?') 
-            } else if (c.id === id) c.quantite--
-        })
-        setLIST_COMMANDES([...newList])
-    }
+        },
+        {
+            id: 2,
+            title: "Shirt blue",
+            desc: "Cotton T-shirt",
+            img: "https://5.imimg.com/data5/NT/IL/MY-40406244/blue-t-shirt-500x500.jpg",
+            price: 44,
+            quantite: 1,
 
-    const handelDelete = (id) => {
-        let newList = [...LIST_COMMANDES]
-        newList = newList.filter(newList => newList.id !== id)
-        setLIST_COMMANDES([...newList])
-    }
+        },
+        {
+            id: 3,
+            title: "Shirt pink",
+            desc: "Cotton T-shirt",
+            img: "https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|140:140,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|220:220,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|540:540",
+            price: 44,
+            quantite: 1,
 
-    const [total, setTotal] = useState(0);
-
-    useEffect(() => {
-        Total();
-    }, [LIST_COMMANDES]);
-
-    const Total = () => {
-
-        let totalVal = 0;
-        LIST_COMMANDES.forEach((c) => {
-            totalVal += c.price * c.quantite
-        })
-        setTotal(totalVal);
-    };
-   
-    const [Quant, setQuant] = useState(0);
-
-    useEffect(() => {
-        QuanT();
-    }, [LIST_COMMANDES]);
-
-    const QuanT = () => {
-
-        let QuantVal = 0;
-        LIST_COMMANDES.forEach((c) => {
-            QuantVal +=  c.quantite
-        })
-        setQuant(QuantVal);
-    };
-
-   
-
-
-    const [ListCommandesBackup, setListCommandesBackup] = useState([
-            new Command(1, "Shirt black", "Cotton T-shirt", black, 44, 1),
-            new Command(2, "Shirt blue", "Cotton T-shirt", blue, 44, 1),
-            new Command(3, "Shirt pink", "Cotton T-shirt", pink, 44, 1),
-        ])
-
-    const filterListCommandes = useRef("")
-    const filterlistByTitile = () =>{
-
-        let query = filterListCommandes.current.value;
-        if(query==="")  setLIST_COMMANDES([...ListCommandesBackup])
-        else{
-        let newList = [...LIST_COMMANDES]
-        newList = newList.filter((c)=>c.title.includes(query))
-        setLIST_COMMANDES([...newList])
+        },
+    ])
+const addQuantity = (id) =>{
+    let newData = [...Data]
+    newData.forEach(D => {
+        if (D.id === id) {
+            D.quantite ++
         }
-      }
+    });
+    setData([...newData])
+}
+
+const decQuantity = (id) =>{
+    let newData = [...Data]
+    newData.forEach(D => {
+       if (D.quantite===0) {
+           alert("do yu want to delete this item")
+       } else
+        if (D.id === id) {
+            D.quantite --
+        }
+    });
+    setData([...newData])
+}
+
+const DeleteItem = (id) => {
+    let newData = [...Data]
+    newData =  newData.filter(newData=> newData.id !==id)
+    setData([...newData])
+
+}
+
+const [Quant, setQuant] = useState(0);
+
+useEffect(() => {
+    QuanT();
+},[Data]);
+
+const QuanT = () => {
+
+    let QuantVal = 0;
+    Data.forEach((c) => {
+        QuantVal +=  c.quantite
+    })
+    setQuant(QuantVal);
+};
+const [TOTAL, setTOTAL] = useState(0);
+
+useEffect(() => {
+    total();
+},[Data]);
+
+const total = () => {
+
+    let Total = 0;
+    Data.forEach((c) => {
+        Total +=  c.quantite * c.price 
+    })
+    setTOTAL(Total);
+};
+const [LASTCOAST, setLASTCOAST] = useState(0);
+
+useEffect(() => {
+    LastCoast();
+},[Data]);
+const LastCoast = () =>{
+  console.log("Standar")
+//   const SelectedValue = target.value;
+//   setLASTCOAST(SelectedValue);
+  
+}
+
+
+const [listDataBAckup, setlistDataBAckup] = useState([
+    {
+        id: 1,
+        title: "Shirt black",
+        desc: "Cotton T-shirt",
+        img: "https://media.istockphoto.com/photos/blank-black-tshirt-front-with-clipping-path-picture-id483960103?k=20&m=483960103&s=612x612&w=0&h=H4TNt5SOmcNIRMqrKY7J5u2Yy-f0ZZbD_Dsqqw3if1I=",
+        price: 44,
+        quantite: 1,
+
+    },
+    {
+        id: 2,
+        title: "Shirt blue",
+        desc: "Cotton T-shirt",
+        img: "https://5.imimg.com/data5/NT/IL/MY-40406244/blue-t-shirt-500x500.jpg",
+        price: 44,
+        quantite: 1,
+
+    },
+    {
+        id: 3,
+        title: "Shirt pink",
+        desc: "Cotton T-shirt",
+        img: "https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|140:140,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|220:220,https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/91F89859AE004153A24E7852F8666F0F/10093625_r.jpg?fit=inside|540:540",
+        price: 44,
+        quantite: 1,
+
+    },
+])
+const filterlistByTitile = useRef("")
+const filterByTitile = () =>{
+    let query = filterlistByTitile.current.value;
+    if(query==="")  setData([...listDataBAckup])
+    else{
+    let newListDAta = [...Data]
+    newListDAta = newListDAta.filter((T)=>T.title.includes(query))
+    setData([...newListDAta])
+    }
+  }
+
 
 
 
     return (
-
-
-        <div className="container card  ">
-            {/* <!-- div pour Shopping cart --> */}
-            <div className="row ">
-                <div className="border col-sm-8 bg-light ">
-                    <div className="cart">
-                        <div className="d-flex justify-content-around">
-                            <h3>Shopping cart</h3>
+        <>
+            <div className=" container   w-100 p-4">
+                <div className="row">
+                    <div className="Shopping-Cart col-8 border">
+                        <div className=" search row m-3">
+                            <h1 className="col-8">Shopping Cart</h1>
                             <ShoppingCartSearch 
                             filterlistByTitile={filterlistByTitile}
-                            filterListCommandes={filterListCommandes} />
+                            filterByTitile={filterByTitile}/>
                         </div>
-                        <hr />
-                        <div className="list-items">
+                        {/* <!-- ////cart shopping/// --> */}
+                    
+                        <ShoppingCartList 
+                        DeleteItem={DeleteItem}
+                        decQuantity={decQuantity}
+                        addQuantity={addQuantity}
+                        ListData={Data} />
 
-                            <ShoppingCartList
-                                onClickDecQuantite={decQuantity}
-                                onClickAddQuantite={addQuantity}
-                                handelClickDelete={handelDelete}
-                                listCommandes={LIST_COMMANDES} />
-
-                        </div>
-
-                        <br />
-
-
-                        <button type="button" className="btn btn-light">
-                            <i className="fas fa-directions"></i>  Back to shop</button>
+                        <button type="button" className="btn btn-light m-4 p-1"><i className="fas fa-directions"></i>  Ceckout</button>
                     </div>
-                    {/* <!-- div pour Shopping cart --> */}
-                </div>
-                <div className="border col-sm-4 bg-secondary summary">
-                    <Summary 
-                    Quant={Quant}
-                    total={total} />
+                    {/* <!-- ////cart shopping/// --> */}
+
+                    {/* <!-- summary --> */}
+                    <div className="summary col-4 border bg-secondary bg-gradient p-4">
+                      <Summary 
+                      LastCoast={LastCoast}
+                      TOTAL={TOTAL}
+                      Quant={Quant} />
+                    </div>
                 </div>
             </div>
-
-            {/* <!-- Div pour summary --> */}
-
-        </div>
-
+        </>
     );
 }
 
-export default ShoopingCart;
+export default ShoppingCart;

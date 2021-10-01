@@ -1,13 +1,10 @@
-import "./style.css"
-
-import ShoopingCart from "./component/ShoopingCart";
-
-
+import ShoppingCart from "./component/ShoopingCart";
+import "../src/template.css"
 function App() {
 
   return (
     <div className="App">
-      <ShoopingCart />
+      <ShoppingCart />
     </div>
   );
 }

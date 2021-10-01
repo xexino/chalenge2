@@ -1,27 +1,35 @@
-const Summary = ({total,Quant}) => {
+import React from 'react'
+
+export default function Summary({Quant,TOTAL,LastCoast}) {
     return (
         <>
-            <h2>Summary</h2>
+            <h3 className="p-3">Summary</h3>
             <hr />
-            <div className="d-flex justify-content-between">
-            <h5>{Quant} Item </h5>
-            <h5>&euro; {total} </h5>
+            <div className="d-flex justify-content-around">
+                <h3> {Quant} items</h3>
+                <h3>$ {TOTAL}</h3>
             </div>
-            <br />
-            <h5>Shipping</h5>
-            <select name="" id="">
-                <option value="Shipping-Delivery-$5.00">Shipping-Delivery-$5.00</option>
+
+            <h5 className="p-3"><b>SHIPPING :</b> </h5>
+            <select className="form-control text-center  mx-auto" style={{ width: " 60%" }} onChange={LastCoast}>
+                <option value="delivery">Standar-delivery-$5.00</option>
+                <option value="delivery">Premium-delivery-$15.00</option>
+                <option value="delivery">Fast-delivery-$40.00(daily delivery)</option>
             </select>
-            <br /> <br />
-            <h5>GIVE CODE</h5>
-            <input type="number" />
-
+            <div className="d-flex m-2">
+                <h5 className="p-2"><b> GIVE CODE :</b></h5>
+                <select name="GIVE CODE" className="form-control text-center mx-auto" style={{ width: " 15%" }}>
+                    <option value="delivery">0%</option>
+                    <option value="delivery">10%</option>
+                    <option value="delivery">20%</option>
+                </select>
+            </div>
             <hr />
-
-            <h5>TOTAL PRICE : &euro;   {total}</h5>
-            <button type="button" className="btn btn-dark drake">REGISTER</button>
+            <div className="d-flex justify-content-around">
+                <p><b>TOTAL PRICE</b> </p>
+                <p><b>$ 137.00</b></p>
+            </div>
+            <button type="button" className="mx-auto btn btn-dark">REGISTER</button>
         </>
-    );
+    )
 }
-
-export default Summary;
